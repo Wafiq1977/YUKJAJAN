@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - YukJajan — Menghubungkan Kuliner Lokal dengan Cara Modern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        yolk: '#FFD600',
+                        'yolk-light': '#FFF9C4',
+                        'yolk-pale': '#FFFDE7',
+                        flame: '#FF8C00',
+                        'flame-deep': '#E67600',
+                        ink: '#2D2D2D',
+                        slate: '#4A4A4A',
+                        muted: '#7A7A7A',
+                        'card-shadow': 'rgba(255, 140, 0, 0.15)',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        ::selection { background: #FFD600; color: #2D2D2D; }
+        html { scroll-behavior: smooth; }
+        .shadow-yolk { box-shadow: 0 8px 30px rgba(255, 214, 0, 0.3); }
+        .shadow-flame { box-shadow: 0 8px 30px rgba(255, 140, 0, 0.2); }
+        .shadow-card { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .shadow-card-hover { box-shadow: 0 12px 40px rgba(255, 140, 0, 0.18); }
+        .float-anim { animation: floatY 4s ease-in-out infinite; }
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .float-anim-delay { animation: floatY 4s ease-in-out 1s infinite; }
+        .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+        }
+        .gradient-hero {
+            background: linear-gradient(135deg, #FFD600 0%, #FFAB00 40%, #FF8C00 100%);
+        }
+        .gradient-footer {
+            background: linear-gradient(180deg, #2D2D2D 0%, #1A1A1A 100%);
+        }
+        .nav-glass {
+            background: rgba(255, 214, 0, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .card-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-lift:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(255,140,0,0.18); }
+    </style>
+</head>
+<body class="font-sans text-ink bg-white overflow-x-hidden">
+
+
+
+    <!-- ======================== NAVBAR ======================== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass border-b border-white/30">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 md:h-20">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2.5 group">
+                <img src="WhatsApp_Image_2026-04-12_at_10.53.26-removebg-preview.png" alt="YukJajan Logo" class="w-10 h-10 object-contain rounded-xl group-hover:scale-105 transition-transform">
+                <span class="text-xl font-800 text-ink tracking-tight">YukJajan</span>
+            </a>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">Home</a>
+                <a href="about.html" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">About Us</a>
+                <a href="service.html" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">Services</a>
+                <a href="joinus.html" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">Join Us</a>
+                <a href="contact.html" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">Contact</a>
+            </div>
+            <!-- Mobile Toggle -->
+            <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/30 transition-colors">
+                <i data-lucide="menu" class="w-5 h-5 text-ink"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-yolk/95 backdrop-blur-lg border-t border-white/20 px-6 py-4 space-y-3">
+            <a href="index.html" class="block text-sm font-600 text-ink/80 py-2">Home</a>
+            <a href="about.html" class="block text-sm font-600 text-ink/80 py-2">About Us</a>
+            <a href="service.html" class="block text-sm font-600 text-ink/80 py-2">Services</a>
+            <a href="joinus.html" class="block text-sm font-600 text-ink/80 py-2">Join Us</a>
+            <a href="contact.html" class="block text-sm font-600 text-ink/80 py-2">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ======================== HERO MINI ======================== -->
+    <section class="gradient-hero pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-20 w-80 h-80 bg-flame/20 rounded-full blur-3xl"></div>
+        <div class="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10">
+            <h1 class="text-3xl md:text-4xl font-800 text-ink leading-tight tracking-tight mb-4">
+                Contact Us
+            </h1>
+            <p class="text-base md:text-lg text-ink/70 leading-relaxed">
+                Hubungi kami untuk pertanyaan, kerjasama, atau informasi lebih lanjut
+            </p>
+        </div>
+        <!-- Wave separator -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 100" fill="none" class="w-full"><path d="M0 40C360 100 720 0 1080 50C1260 75 1380 60 1440 40V100H0V40Z" fill="white"/></svg>
+        </div>
+    </section>
+
+    <!-- ======================== CONTACT SECTION ======================== -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-6xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-14">
+                <span class="inline-block text-xs font-700 text-flame uppercase tracking-[0.2em] mb-3">Hubungi Kami</span>
+                <h2 class="text-3xl md:text-4xl font-800 text-ink tracking-tight">KONTAK</h2>
+                <div class="w-16 h-1 bg-yolk rounded-full mx-auto mt-4"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-2.5 mb-5">
+                        <div class="w-10 h-10 bg-yolk rounded-xl flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M4 8C4 8 5 5 8 4C11 3 14 3 17 5C20 7 20 10 20 10" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M3 12L6 18L18 18L21 12" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 10V8" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 9V7" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 10V8" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="8" cy="14" r="1.5" fill="#2D2D2D"/>
+                                <circle cx="12" cy="14" r="1.5" fill="#2D2D2D"/>
+                                <circle cx="16" cy="14" r="1.5" fill="#2D2D2D"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-800 text-ink tracking-tight">YukJajan</span>
+                    </div>
+                    <p class="text-sm text-slate leading-relaxed max-w-xs">
+                        Menghubungkan kuliner lokal dengan cara modern. Temukan, pesan, dan nikmati jajanan lokal favoritmu.
+                    </p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-sm font-700 text-flame uppercase tracking-wider mb-5">Navigasi</h4>
+                    <div class="space-y-3">
+                        <a href="index.html" class="block text-sm text-slate/80 hover:text-flame transition-colors">Home</a>
+                        <a href="about.html" class="block text-sm text-slate/80 hover:text-flame transition-colors">About Us</a>
+                        <a href="service.html" class="block text-sm text-slate/80 hover:text-flame transition-colors">Services</a>
+                        <a href="joinus.html" class="block text-sm text-slate/80 hover:text-flame transition-colors">Join Us</a>
+                    </div>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-sm font-700 text-flame uppercase tracking-wider mb-5">Hubungi Kami</h4>
+                    <div class="space-y-4">
+                        <a href="mailto:yukjajan@email.com" class="flex items-center gap-3 text-sm text-slate/80 hover:text-flame transition-colors group">
+                            <div class="w-9 h-9 bg-yolk/20 rounded-lg flex items-center justify-center group-hover:bg-flame/20 transition-colors">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                            </div>
+                            yukjajan@email.com
+                        </a>
+                        <a href="https://instagram.com/yukjajan" target="_blank" class="flex items-center gap-3 text-sm text-slate/80 hover:text-flame transition-colors group">
+                            <div class="w-9 h-9 bg-yolk/20 rounded-lg flex items-center justify-center group-hover:bg-flame/20 transition-colors">
+                                <i data-lucide="instagram" class="w-4 h-4"></i>
+                            </div>
+                            @yukjajan
+                        </a>
+                        <a href="https://wa.me/62800000000" target="_blank" class="flex items-center gap-3 text-sm text-slate/80 hover:text-flame transition-colors group">
+                            <div class="w-9 h-9 bg-yolk/20 rounded-lg flex items-center justify-center group-hover:bg-flame/20 transition-colors">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            </div>
+                            08xxxx
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== FOOTER ======================== -->
+    <footer class="gradient-footer pt-16 pb-8 relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yolk via-flame to-yolk"></div>
+        <div class="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+            <!-- Bottom Bar -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-white/40">&copy; 2025 YukJajan. All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center hover:bg-yolk/20 transition-colors">
+                        <i data-lucide="instagram" class="w-4 h-4 text-white/50"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center hover:bg-yolk/20 transition-colors">
+                        <i data-lucide="twitter" class="w-4 h-4 text-white/50"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center hover:bg-yolk/20 transition-colors">
+                        <i data-lucide="youtube" class="w-4 h-4 text-white/50"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================== SCRIPTS ======================== -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let menuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('hidden', !menuOpen);
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+
+
+        // Simple scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(24px)';
+            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

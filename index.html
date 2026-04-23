@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YukJajan — Menghubungkan Kuliner Lokal dengan Cara Modern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        yolk: '#FFD600',
+                        'yolk-light': '#FFF9C4',
+                        'yolk-pale': '#FFFDE7',
+                        flame: '#FF8C00',
+                        'flame-deep': '#E67600',
+                        ink: '#2D2D2D',
+                        slate: '#4A4A4A',
+                        muted: '#7A7A7A',
+                        'card-shadow': 'rgba(255, 140, 0, 0.15)',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        ::selection { background: #FFD600; color: #2D2D2D; }
+        html { scroll-behavior: smooth; }
+        .shadow-yolk { box-shadow: 0 8px 30px rgba(255, 214, 0, 0.3); }
+        .shadow-flame { box-shadow: 0 8px 30px rgba(255, 140, 0, 0.2); }
+        .shadow-card { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .shadow-card-hover { box-shadow: 0 12px 40px rgba(255, 140, 0, 0.18); }
+        .float-anim { animation: floatY 4s ease-in-out infinite; }
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .float-anim-delay { animation: floatY 4s ease-in-out 1s infinite; }
+        .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+        }
+        .gradient-hero {
+            background: linear-gradient(135deg, #FFD600 0%, #FFAB00 40%, #FF8C00 100%);
+        }
+        .gradient-footer {
+            background: linear-gradient(180deg, #2D2D2D 0%, #1A1A1A 100%);
+        }
+        .nav-glass {
+            background: rgba(255, 214, 0, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .card-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-lift:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(255,140,0,0.18); }
+    </style>
+</head>
+<body class="font-sans text-ink bg-white overflow-x-hidden">
+
+    <!-- ======================== SPLASH SCREEN ======================== -->
+    <div id="splash-screen" class="fixed inset-0 bg-yolk flex items-center justify-center z-50 transition-opacity duration-500">
+        <div class="text-center">
+            <img src="WhatsApp_Image_2026-04-12_at_10.53.26-removebg-preview.png" alt="YukJajan Logo" class="w-20 h-20 object-contain mb-4 animate-pulse">
+            <div class="text-ink text-xl font-800">YukJajan</div>
+            <div class="text-ink/70 text-sm mt-2">Loading...</div>
+        </div>
+    </div>
+
+    <!-- ======================== NAVBAR ======================== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass border-b border-white/30">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 md:h-20">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <img src="WhatsApp_Image_2026-04-12_at_10.53.26-removebg-preview.png" alt="YukJajan Logo" class="w-10 h-10 object-contain rounded-xl group-hover:scale-105 transition-transform">
+                <span class="text-xl font-800 text-ink tracking-tight">YukJajan</span>
+            </a>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#hero" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">Home</a>
+                <a href="about.html" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">About Us</a>
+                <a href="service.html" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">Services</a>
+                <a href="joinus.html" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">Join Us</a>
+                <a href="contact.html" class="text-sm font-600 text-ink/80 hover:text-ink transition-colors">Contact</a>
+            </div>
+            <!-- Mobile Toggle -->
+            <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/30 transition-colors">
+                <i data-lucide="menu" class="w-5 h-5 text-ink"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-yolk/95 backdrop-blur-lg border-t border-white/20 px-6 py-4 space-y-3">
+            <a href="#hero" class="block text-sm font-600 text-ink/80 py-2">Home</a>
+            <a href="about.html" class="block text-sm font-600 text-ink/80 py-2">About Us</a>
+            <a href="service.html" class="block text-sm font-600 text-ink/80 py-2">Services</a>
+            <a href="joinus.html" class="block text-sm font-600 text-ink/80 py-2">Join Us</a>
+            <a href="contact.html" class="block text-sm font-600 text-ink/80 py-2">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ======================== SECTION 1: HERO ======================== -->
+    <section id="hero" class="gradient-hero min-h-screen pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-20 w-80 h-80 bg-flame/20 rounded-full blur-3xl"></div>
+        <div class="absolute top-40 right-1/4 w-3 h-3 bg-white rounded-full pulse-dot"></div>
+        <div class="absolute top-60 left-1/3 w-2 h-2 bg-white rounded-full pulse-dot" style="animation-delay:0.5s"></div>
+        <div class="absolute bottom-40 left-20 w-4 h-4 bg-white/40 rounded-full pulse-dot" style="animation-delay:1s"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-8 relative z-10">
+            <!-- Left Content -->
+            <div class="flex-1 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
+                    <span class="w-2 h-2 bg-white rounded-full pulse-dot"></span>
+                    <span class="text-xs font-600 text-ink/80 uppercase tracking-wider">Marketplace Kuliner Lokal</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-800 text-ink leading-tight tracking-tight mb-6">
+                    YukJajan — Menghubungkan Kuliner Lokal dengan Cara Modern
+                </h1>
+                <p class="text-base md:text-lg text-ink/70 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
+                    Platform marketplace yang memudahkan masyarakat menemukan, memesan, dan menikmati jajanan lokal dengan aman dan praktis.
+                </p>
+                <a href="#about" class="inline-flex items-center gap-3 bg-ink text-yolk font-700 text-sm md:text-base px-8 py-4 rounded-2xl hover:bg-ink/90 hover:shadow-yolk transition-all duration-300 group">
+                    Mulai Jelajahi YukJajan Sekarang
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <!-- Stats mini -->
+                <div class="flex items-center justify-center lg:justify-start gap-8 mt-10">
+                    <div>
+                        <div class="text-2xl font-800 text-ink">500+</div>
+                        <div class="text-xs text-ink/60 font-500">Penjual Aktif</div>
+                    </div>
+                    <div class="w-px h-10 bg-ink/20"></div>
+                    <div>
+                        <div class="text-2xl font-800 text-ink">10K+</div>
+                        <div class="text-xs text-ink/60 font-500">Pesanan/Bulan</div>
+                    </div>
+                    <div class="w-px h-10 bg-ink/20"></div>
+                    <div>
+                        <div class="text-2xl font-800 text-ink">0%</div>
+                        <div class="text-xs text-ink/60 font-500">Komisi</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right: Phone Illustration -->
+            <div class="flex-1 flex justify-center lg:justify-end relative">
+                <div class="relative float-anim">
+                    <!-- Phone Frame -->
+                    <div class="w-64 md:w-72 bg-ink rounded-[2.5rem] p-3 shadow-2xl">
+                        <div class="bg-white rounded-[2rem] overflow-hidden">
+                            <!-- Status Bar -->
+                            <div class="bg-yolk px-5 pt-4 pb-3 flex items-center justify-between">
+                                <span class="text-[10px] font-600 text-ink/70">9:41</span>
+                                <div class="w-16 h-4 bg-ink rounded-full mx-auto"></div>
+                                <div class="flex gap-1">
+                                    <div class="w-3 h-2 bg-ink/40 rounded-sm"></div>
+                                    <div class="w-3 h-2 bg-ink/40 rounded-sm"></div>
+                                </div>
+                            </div>
+                            <!-- App Header -->
+                            <div class="bg-yolk px-5 pb-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-7 h-7 bg-ink rounded-lg flex items-center justify-center">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 8C4 8 5 5 8 4C11 3 14 3 17 5C20 7 20 10 20 10" stroke="#FFD600" stroke-width="2.5" stroke-linecap="round"/><path d="M3 12L6 18L18 18L21 12" stroke="#FFD600" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </div>
+                                    <span class="text-sm font-700 text-ink">YukJajan</span>
+                                </div>
+                                <div class="bg-white rounded-xl px-3 py-2 flex items-center gap-2">
+                                    <i data-lucide="search" class="w-3.5 h-3.5 text-muted"></i>
+                                    <span class="text-[10px] text-muted">Cari jajanan favorit...</span>
+                                </div>
+                            </div>
+                            <!-- Food Grid -->
+                            <div class="px-4 py-3 grid grid-cols-2 gap-2">
+                                <div class="bg-yolk-pale rounded-xl p-2.5 text-center">
+                                    <div class="text-2xl mb-1">🥟</div>
+                                    <div class="text-[9px] font-600 text-ink">Risoles</div>
+                                    <div class="text-[8px] text-flame font-700">Rp 3.000</div>
+                                </div>
+                                <div class="bg-yolk-pale rounded-xl p-2.5 text-center">
+                                    <div class="text-2xl mb-1">🍡</div>
+                                    <div class="text-[9px] font-600 text-ink">Klepon</div>
+                                    <div class="text-[8px] text-flame font-700">Rp 2.000</div>
+                                </div>
+                                <div class="bg-yolk-pale rounded-xl p-2.5 text-center">
+                                    <div class="text-2xl mb-1">🧁</div>
+                                    <div class="text-[9px] font-600 text-ink">Kue Lumpur</div>
+                                    <div class="text-[8px] text-flame font-700">Rp 4.000</div>
+                                </div>
+                                <div class="bg-yolk-pale rounded-xl p-2.5 text-center">
+                                    <div class="text-2xl mb-1">🍘</div>
+                                    <div class="text-[9px] font-600 text-ink">Lemper</div>
+                                    <div class="text-[8px] text-flame font-700">Rp 3.500</div>
+                                </div>
+                            </div>
+                            <!-- Bottom Nav -->
+                            <div class="px-4 py-2 border-t border-ink/5 flex justify-around">
+                                <div class="flex flex-col items-center gap-0.5">
+                                    <i data-lucide="home" class="w-3.5 h-3.5 text-flame"></i>
+                                    <span class="text-[7px] font-600 text-flame">Home</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-0.5">
+                                    <i data-lucide="search" class="w-3.5 h-3.5 text-muted"></i>
+                                    <span class="text-[7px] font-500 text-muted">Cari</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-0.5">
+                                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5 text-muted"></i>
+                                    <span class="text-[7px] font-500 text-muted">Pesanan</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-0.5">
+                                    <i data-lucide="user" class="w-3.5 h-3.5 text-muted"></i>
+                                    <span class="text-[7px] font-500 text-muted">Profil</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating Food Items -->
+                    <div class="absolute -top-6 -left-8 w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center float-anim-delay">
+                        <span class="text-3xl">🍕</span>
+                    </div>
+                    <div class="absolute -bottom-4 -left-12 w-12 h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center float-anim">
+                        <span class="text-2xl">🍩</span>
+                    </div>
+                    <div class="absolute top-1/4 -right-10 w-12 h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center float-anim-delay">
+                        <span class="text-2xl">🍢</span>
+                    </div>
+                    <!-- Delivery Character -->
+                    <div class="absolute -bottom-8 -right-6">
+                        <div class="w-16 h-16 bg-flame rounded-2xl shadow-lg flex items-center justify-center float-anim">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="10" r="5" fill="white"/>
+                                <path d="M8 28C8 22 11.5 18 16 18C20.5 18 24 22 24 28" fill="white"/>
+                                <rect x="24" y="16" width="6" height="8" rx="2" fill="white"/>
+                                <rect x="25" y="18" width="4" height="4" rx="1" fill="#FFD600"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Wave separator -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 100" fill="none" class="w-full"><path d="M0 40C360 100 720 0 1080 50C1260 75 1380 60 1440 40V100H0V40Z" fill="white"/></svg>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ======================== SECTION 7: FOOTER / CONTACT ======================== -->
+    <footer id="contact" class="gradient-footer pt-16 pb-8 relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yolk via-flame to-yolk"></div>
+        <div class="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-12">
+                <div class="flex items-center gap-2.5 mb-5 justify-center">
+                    <div class="w-10 h-10 bg-yolk rounded-xl flex items-center justify-center">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 8C4 8 5 5 8 4C11 3 14 3 17 5C20 7 20 10 20 10" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 12L6 18L18 18L21 12" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 10V8" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 9V7" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 10V8" stroke="#2D2D2D" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="8" cy="14" r="1.5" fill="#2D2D2D"/>
+                            <circle cx="12" cy="14" r="1.5" fill="#2D2D2D"/>
+                            <circle cx="16" cy="14" r="1.5" fill="#2D2D2D"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-800 text-yolk tracking-tight">YukJajan</span>
+                </div>
+                <p class="text-sm text-white/50 leading-relaxed max-w-xs mx-auto">
+                    Menghubungkan kuliner lokal dengan cara modern. Temukan, pesan, dan nikmati jajanan lokal favoritmu.
+                </p>
+            </div>
+            <!-- Bottom Bar -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-white/40">&copy; 2025 YukJajan. All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center hover:bg-yolk/20 transition-colors">
+                        <i data-lucide="instagram" class="w-4 h-4 text-white/50"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center hover:bg-yolk/20 transition-colors">
+                        <i data-lucide="twitter" class="w-4 h-4 text-white/50"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center hover:bg-yolk/20 transition-colors">
+                        <i data-lucide="youtube" class="w-4 h-4 text-white/50"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================== SCRIPTS ======================== -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let menuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('hidden', !menuOpen);
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        // Splash screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                splash.style.opacity = '0';
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Simple scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(24px)';
+            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
