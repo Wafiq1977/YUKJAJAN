@@ -387,49 +387,84 @@
 
     <!-- ======================== APP PREVIEW ======================== -->
     <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-6xl mx-auto px-6 md:px-12">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
             <div class="text-center mb-14">
                 <span class="inline-block text-xs font-700 text-flame uppercase tracking-[0.2em] mb-3">Pratinjau Aplikasi</span>
                 <h2 class="text-3xl md:text-4xl font-800 text-ink tracking-tight">TAMPILAN APLIKASI YUKJAJAN</h2>
                 <div class="w-16 h-1 bg-yolk rounded-full mx-auto mt-4"></div>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Screen 1 -->
-                <div class="bg-yolk-pale rounded-3xl p-6 card-lift text-center">
-                    <div class="bg-white rounded-2xl p-4 mb-4 shadow-card">
-                        <div class="bg-yolk rounded-xl h-32 flex items-center justify-center mb-3">
-                            <span class="text-4xl">🍕</span>
-                        </div>
-                        <div class="text-sm font-600 text-ink mb-1">Beranda</div>
-                        <div class="text-xs text-muted">Temukan jajanan terdekat</div>
+                <div class="text-center card-lift">
+                    <div class="screen-frame mx-auto mb-4">
+                        <img src="WhatsApp Image 2026-04-23 at 14.19.25.jpeg" alt="YukJajan Homepage Screenshot" class="w-full h-full object-cover rounded-2xl">
                     </div>
-                    <h4 class="font-700 text-ink">Homepage</h4>
+                    <h4 class="font-700 text-ink text-lg">Homepage</h4>
+                    <p class="text-sm text-muted mt-2">Temukan jajanan terdekat</p>
                 </div>
                 <!-- Screen 2 -->
-                <div class="bg-yolk-pale rounded-3xl p-6 card-lift text-center">
-                    <div class="bg-white rounded-2xl p-4 mb-4 shadow-card">
-                        <div class="bg-flame rounded-xl h-32 flex items-center justify-center mb-3 text-white">
-                            <i data-lucide="search" class="w-16 h-16"></i>
-                        </div>
-                        <div class="text-sm font-600 text-ink mb-1">Pencarian</div>
-                        <div class="text-xs text-muted">Cari berdasarkan lokasi</div>
+                <div class="text-center card-lift">
+                    <div class="screen-frame mx-auto mb-4">
+                        <img src="WhatsApp Image 2026-04-23 at 14.48.33.jpeg" alt="YukJajan Search Screenshot" class="w-full h-full object-cover rounded-2xl">
                     </div>
-                    <h4 class="font-700 text-ink">Search Feature</h4>
+                    <h4 class="font-700 text-ink text-lg">Keranjang Jajan</h4>
+                    <p class="text-sm text-muted mt-2">Cari berdasarkan lokasi</p>
                 </div>
                 <!-- Screen 3 -->
-                <div class="bg-yolk-pale rounded-3xl p-6 card-lift text-center">
-                    <div class="bg-white rounded-2xl p-4 mb-4 shadow-card">
-                        <div class="bg-yolk rounded-xl h-32 flex items-center justify-center mb-3">
-                            <i data-lucide="shopping-cart" class="w-16 h-16 text-ink"></i>
-                        </div>
-                        <div class="text-sm font-600 text-ink mb-1">Keranjang</div>
-                        <div class="text-xs text-muted">Kelola pesanan Anda</div>
+                <div class="text-center card-lift">
+                    <div class="screen-frame mx-auto mb-4">
+                        <img src="WhatsApp Image 2026-04-23 at 14.48.34.jpeg" alt="YukJajan Cart Screenshot" class="w-full h-full object-cover rounded-2xl">
                     </div>
-                    <h4 class="font-700 text-ink">Cart & Checkout</h4>
+                    <h4 class="font-700 text-ink text-lg">Checkout</h4>
+                    <p class="text-sm text-muted mt-2">Kelola pesanan Anda</p>
+                </div>
+                <!-- Screen 4 -->
+                <div class="text-center card-lift">
+                    <div class="screen-frame mx-auto mb-4">
+                        <img src="WhatsApp Image 2026-04-23 at 14.48.33 (1).jpeg" alt="YukJajan Menu Screenshot" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <h4 class="font-700 text-ink text-lg">Metode Pembayaran</h4>
+                    <p class="text-sm text-muted mt-2">Lihat detail jajanan</p>
+                </div>
+                <!-- Screen 5 -->
+                <div class="text-center card-lift">
+                    <div class="screen-frame mx-auto mb-4">
+                        <img src="WhatsApp Image 2026-04-23 at 14.48.34 (1).jpeg" alt="YukJajan Orders Screenshot" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <h4 class="font-700 text-ink text-lg">Barcode Jajan</h4>
+                    <p class="text-sm text-muted mt-2">Riwayat pesanan Anda</p>
+                </div>
+                <!-- Screen 6 -->
+                <div class="text-center card-lift">
+                    <div class="screen-frame mx-auto mb-4">
+                        <img src="WhatsApp Image 2026-04-23 at 14.52.52.jpeg" alt="YukJajan Profile Screenshot" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                    <h4 class="font-700 text-ink text-lg">Menu UMKM</h4>
+                    <p class="text-sm text-muted mt-2">Kelola akun Anda</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <style>
+        .screen-frame {
+            position: relative;
+            width: 200px;
+            height: 400px;
+            background: #1a1a1a;
+            border-radius: 28px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+        }
+
+        .screen-frame img {
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            object-cover;
+        }
+    </style>
 
     <!-- ======================== TESTIMONIALS ======================== -->
     <section class="py-20 md:py-28 bg-yolk-pale">
