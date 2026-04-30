@@ -64,8 +64,6 @@
 </head>
 <body class="font-sans text-ink bg-white overflow-x-hidden">
 
-
-
     <!-- ======================== NAVBAR ======================== -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass border-b border-white/30">
         <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 md:h-20">
@@ -97,7 +95,7 @@
         </div>
     </nav>
 
-    <!-- ======================== HERO MINI ======================== -->
+    <!-- ======================== CONTENT ======================== -->
     <section id="team" class="py-20 md:py-28 bg-white">
         <div class="max-w-6xl mx-auto px-6 md:px-12">
             <div class="text-center mb-16">
@@ -107,12 +105,16 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-yolk to-flame rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative">
-                        <img src="foto-bertiga.png" alt="Tim YukJajan" class="w-full h-auto object-cover">
+                <!-- BAGIAN FOTO YANG DIPERBAIKI -->
+                <div class="relative flex justify-center items-center">
+                    <!-- Efek Lingkaran di Belakang -->
+                    <div class="absolute w-64 h-64 md:w-80 md:h-80 bg-gradient-to-tr from-yolk to-flame rounded-full blur-2xl opacity-20 float-anim"></div>
+                    <div class="absolute w-48 h-48 md:w-64 md:h-64 border-2 border-yolk/30 rounded-full float-anim-delay"></div>
+                    
+                    <!-- Foto Utama (Transparan) -->
+                    <div class="relative z-10 group">
+                        <img src="foto-bertiga.png" alt="Tim YukJajan" class="w-full max-w-sm h-auto object-contain transition-transform duration-500 group-hover:scale-105">
                     </div>
-                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-yolk-light rounded-full -z-10 float-anim"></div>
                 </div>
 
                 <div class="space-y-6">
@@ -121,11 +123,11 @@
                         Kami adalah tim mahasiswa yang bersemangat untuk memodernisasi cara UMKM lokal berjualan. Lewat <strong>YukJajan</strong>, kami ingin memastikan setiap pedagang memiliki akses mudah ke jasa pengantaran dan sistem input dagangan yang praktis.
                     </p>
                     <div class="grid grid-cols-2 gap-4 pt-4">
-                        <div class="p-4 bg-yolk-pale rounded-xl border border-yolk/20">
+                        <div class="p-4 bg-yolk-pale rounded-xl border border-yolk/20 shadow-sm hover:shadow-md transition-shadow">
                             <h4 class="font-800 text-flame text-xl">100%</h4>
                             <p class="text-xs font-600 text-ink">Karya Mahasiswa</p>
                         </div>
-                        <div class="p-4 bg-yolk-pale rounded-xl border border-yolk/20">
+                        <div class="p-4 bg-yolk-pale rounded-xl border border-yolk/20 shadow-sm hover:shadow-md transition-shadow">
                             <h4 class="font-800 text-flame text-xl">Mudah</h4>
                             <p class="text-xs font-600 text-ink">Input Dagangan</p>
                         </div>
@@ -211,7 +213,7 @@
                             </div>
                             @yukjajan
                         </a>
-                        <a href="https://wa.me/62800000000" target="_blank" class="flex items-center gap-3 text-sm text-white/60 hover:text-yolk transition-colors group">
+                        <a href="https://wa.me/6281554048271" target="_blank" class="flex items-center gap-3 text-sm text-white/60 hover:text-yolk transition-colors group">
                             <div class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-yolk/20 transition-colors">
                                 <i data-lucide="message-circle" class="w-4 h-4"></i>
                             </div>
@@ -240,10 +242,8 @@
 
     <!-- ======================== SCRIPTS ======================== -->
     <script>
-        // Initialize Lucide icons
         lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
 
-        // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         let menuOpen = false;
@@ -253,15 +253,6 @@
             mobileMenu.classList.toggle('hidden', !menuOpen);
         });
 
-        // Close mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuOpen = false;
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Navbar background on scroll
         const nav = document.querySelector('nav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -271,14 +262,7 @@
             }
         });
 
-
-
-        // Simple scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
